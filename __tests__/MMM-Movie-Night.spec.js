@@ -1,5 +1,4 @@
-/* eslint-disable global-require */
-describe('MMM-Movie-Night', () => {
+ describe('MMM-Movie-Night', () => {
   beforeAll(() => {
     require('../__mocks__/Module');
     require('../__mocks__/globalLogger');

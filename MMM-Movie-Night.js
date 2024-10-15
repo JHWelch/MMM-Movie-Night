@@ -57,7 +57,7 @@ Module.register('MMM-Movie-Night', {
     };
   },
 
-  socketNotificationReceived(notification, payload) {
+  socketNotificationReceived(notification, _payload) {
     if (notification !== 'MMM-Movie-Night-DATA') {
       return;
     }

@@ -10,7 +10,7 @@ const fetch = require('node-fetch');
 const NodeHelper = require('node_helper');
 
 module.exports = NodeHelper.create({
-  socketNotificationReceived(notification, payload) {
+  socketNotificationReceived(notification, _payload) {
     if (notification !== 'MMM-Movie-Night-FETCH') {
       return;
     }
