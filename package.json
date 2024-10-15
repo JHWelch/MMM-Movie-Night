@@ -1,0 +1,11 @@
+{
+  "name": "mmm-movie-night",
+  "version": "1.0.0",
+  "description": "A Magic Mirror module for viewing the next movies.wowellworld.com movie.",
+  "main": "MMM-Movie-Night.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jordan Welch",
+  "license": "MIT"
+}
