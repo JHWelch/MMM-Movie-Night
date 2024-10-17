@@ -25,7 +25,7 @@ module.exports = NodeHelper.create({
 
     const weeks = await response.json();
 
-    this.sendSocketNotification('MMM-Movie-Night-DATA', weeks[0]);
+    this.sendSocketNotification('MMM-Movie-Night-DATA', { week: weeks[0] });
   },
 
   requestInit() {
