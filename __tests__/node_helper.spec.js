@@ -68,7 +68,7 @@ describe('node_helper', () => {
         fetchMock.restore();
       });
 
-      it('calls frontend with movie', () => {
+      it('calls movie API', () => {
         helper.socketNotificationReceived('MMM-Movie-Night-FETCH');
 
         expect(fetchMock.calls(true)[0][0])
@@ -81,6 +81,20 @@ describe('node_helper', () => {
         expect(helper.sendSocketNotification)
           .toHaveBeenCalledWith('MMM-Movie-Night-DATA', week);
       });
+    });
+  });
+
+  describe('called with any other message', () => {
+    it('does not call movie API', () => {
+      helper.socketNotificationReceived('NOT-MMM-Movie-Night-FETCH');
+
+      expect(fetchMock.calls()).toHaveLength(0);
+    });
+
+    it('does not call frontend with movie', () => {
+      helper.socketNotificationReceived('NOT-MMM-Movie-Night-FETCH');
+
+      expect(helper.sendSocketNotification).not.toHaveBeenCalled();
     });
   });
 });
