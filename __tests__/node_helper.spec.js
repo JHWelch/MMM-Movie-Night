@@ -44,13 +44,9 @@ const week = {
 
 describe('node_helper', () => {
   let helper;
-  // let Log;
-  // let fetch;
 
   beforeEach(() => {
     helper = require('../node_helper');
-    // Log = require('logger');
-    // fetch = require('node-fetch');
 
     helper.setName('MMM-Movie-Night');
   });
