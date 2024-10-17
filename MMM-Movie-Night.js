@@ -9,7 +9,7 @@
 
 Module.register('MMM-Movie-Night', {
   defaults: {
-    updateInterval: 60000,
+    updateInterval: 3600000,
   },
 
   requiresVersion: '2.2.0',
