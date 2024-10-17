@@ -36,7 +36,10 @@ Module.register('MMM-Movie-Night', {
   },
 
   getTemplateData() {
-    return {};
+    return {
+      ...this.data.week,
+      loading: this.loading,
+    };
   },
 
   getScripts() {

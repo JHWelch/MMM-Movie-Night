@@ -83,10 +83,22 @@ describe('MMM-Movie-Night', () => {
   });
 
   describe('getTemplateData', () => {
-    it('returns information needed by template', () => {
-      MMMMovieNight.data.aqi = 179;
+    it('can return simple loading state', () => {
+      MMMMovieNight.loading = true;
 
-      expect(MMMMovieNight.getTemplateData()).toEqual({});
+      expect(MMMMovieNight.getTemplateData()).toEqual({
+        loading: true,
+      });
+    });
+
+    it('returns information needed by template', () => {
+      MMMMovieNight.data.week = week;
+      MMMMovieNight.loading = false;
+
+      expect(MMMMovieNight.getTemplateData()).toEqual({
+        ...week,
+        loading: false,
+      });
     });
   });
 
