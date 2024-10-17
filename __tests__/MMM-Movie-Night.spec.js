@@ -1,3 +1,5 @@
+const week = require('./fixtures/week');
+
 describe('MMM-Movie-Night', () => {
   beforeAll(() => {
     require('../__mocks__/Module');
@@ -100,26 +102,31 @@ describe('MMM-Movie-Night', () => {
   });
 
   describe('socketNotificationReceived', () => {
-    const payload = { aqi: 179 };
     describe('notification is MMM-Movie-Night-DATA', () => {
       it('sets loading to false', () => {
-        MMMMovieNight.socketNotificationReceived('MMM-Movie-Night-DATA', payload);
+        MMMMovieNight.socketNotificationReceived('MMM-Movie-Night-DATA', {week});
 
         expect(MMMMovieNight.loading).toBe(false);
       });
 
       it('updates dom', () => {
-        MMMMovieNight.socketNotificationReceived('MMM-Movie-Night-DATA', payload);
+        MMMMovieNight.socketNotificationReceived('MMM-Movie-Night-DATA', {week});
 
         expect(MMMMovieNight.updateDom).toHaveBeenCalled();
+      });
+
+      it('sets data', () => {
+        MMMMovieNight.socketNotificationReceived('MMM-Movie-Night-DATA', {week});
+
+        expect(MMMMovieNight.data.week).toEqual(week);
       });
     });
 
     describe('notification is not MMM-Movie-Night-DATA', () => {
       it('does not set data', () => {
-        MMMMovieNight.socketNotificationReceived('NOT-MMM-Movie-Night-DATA', payload);
+        MMMMovieNight.socketNotificationReceived('NOT-MMM-Movie-Night-DATA', {week});
 
-        expect(MMMMovieNight.data.aqi).toEqual(undefined);
+        expect(MMMMovieNight.data.week).toEqual(undefined);
       });
     });
   });

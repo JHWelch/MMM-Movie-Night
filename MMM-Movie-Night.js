@@ -57,11 +57,12 @@ Module.register('MMM-Movie-Night', {
     };
   },
 
-  socketNotificationReceived(notification, _payload) {
+  socketNotificationReceived(notification, payload) {
     if (notification !== 'MMM-Movie-Night-DATA') {
       return;
     }
 
+    this.data.week = payload.week;
     this.loading = false;
     this.updateDom(300);
   },
