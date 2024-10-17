@@ -6,28 +6,28 @@
 
   const name = 'MMM-Movie-Night';
 
-  let MMMAQI;
+  let MMMMovieNight;
 
   beforeEach(() => {
     jest.resetModules();
     require('../MMM-Movie-Night');
 
-    MMMAQI = global.Module.create(name);
-    MMMAQI.setData({ name, identifier: `Module_1_${name}` });
+    MMMMovieNight = global.Module.create(name);
+    MMMMovieNight.setData({ name, identifier: `Module_1_${name}` });
   });
 
   it('requires expected version', () => {
-    expect(MMMAQI.requiresVersion).toBe('2.2.0');
+    expect(MMMMovieNight.requiresVersion).toBe('2.2.0');
   });
 
   describe('defaults', () => {
     test('updateInterval', () => {
-      expect(MMMAQI.defaults.updateInterval).toBe(60000);
+      expect(MMMMovieNight.defaults.updateInterval).toBe(60000);
     });
   });
 
   it('inits module in loading state', () => {
-    expect(MMMAQI.loading).toBe(true);
+    expect(MMMMovieNight.loading).toBe(true);
   });
 
   describe('start', () => {
@@ -35,7 +35,7 @@
     const configObject = {};
 
     beforeEach(() => {
-      MMMAQI.setConfig(configObject);
+      MMMMovieNight.setConfig(configObject);
       global.setInterval = jest.fn();
     });
 
@@ -44,30 +44,30 @@
     });
 
     test('logs start of module', () => {
-      MMMAQI.start();
+      MMMMovieNight.start();
 
       expect(global.Log.info).toHaveBeenCalledWith('Starting module: MMM-Movie-Night');
     });
 
     test('requests data from node_helper with config variables', () => {
-      MMMAQI.start();
+      MMMMovieNight.start();
 
-      expect(MMMAQI.sendSocketNotification)
+      expect(MMMMovieNight.sendSocketNotification)
         .toHaveBeenCalledWith('MMM-Movie-Night-FETCH');
     });
 
     test('interval requests data from node_helper', () => {
-      MMMAQI.start();
+      MMMMovieNight.start();
       global.setInterval.mock.calls[0][0]();
 
-      expect(MMMAQI.sendSocketNotification).toHaveBeenCalledTimes(2);
-      expect(MMMAQI.sendSocketNotification)
+      expect(MMMMovieNight.sendSocketNotification).toHaveBeenCalledTimes(2);
+      expect(MMMMovieNight.sendSocketNotification)
         .toHaveBeenCalledWith('MMM-Movie-Night-FETCH');
     });
 
     test('interval set starts with default value', () => {
-      MMMAQI.setConfig({ updateInterval: 100000 });
-      MMMAQI.start();
+      MMMMovieNight.setConfig({ updateInterval: 100000 });
+      MMMMovieNight.start();
 
       expect(global.setInterval)
         .toHaveBeenCalledWith(expect.any(Function), 100000);
@@ -76,22 +76,22 @@
 
   describe('getTemplate', () => {
     it('returns template path', () => {
-      expect(MMMAQI.getTemplate()).toBe('templates/MMM-Movie-Night.njk');
+      expect(MMMMovieNight.getTemplate()).toBe('templates/MMM-Movie-Night.njk');
     });
   });
 
   describe('getTemplateData', () => {
     it('returns information needed by template', () => {
-      MMMAQI.data.aqi = 179;
+      MMMMovieNight.data.aqi = 179;
 
-      expect(MMMAQI.getTemplateData()).toEqual({});
+      expect(MMMMovieNight.getTemplateData()).toEqual({});
     });
   });
 
   describe('getStyles', () => {
     describe('default', () => {
       it('returns styles path', () => {
-        expect(MMMAQI.getStyles()).toEqual([
+        expect(MMMMovieNight.getStyles()).toEqual([
           'font-awesome.css',
           'MMM-Movie-Night.css',
         ]);
@@ -103,23 +103,23 @@
     const payload = { aqi: 179 };
     describe('notification is MMM-Movie-Night-DATA', () => {
       it('sets loading to false', () => {
-        MMMAQI.socketNotificationReceived('MMM-Movie-Night-DATA', payload);
+        MMMMovieNight.socketNotificationReceived('MMM-Movie-Night-DATA', payload);
 
-        expect(MMMAQI.loading).toBe(false);
+        expect(MMMMovieNight.loading).toBe(false);
       });
 
       it('updates dom', () => {
-        MMMAQI.socketNotificationReceived('MMM-Movie-Night-DATA', payload);
+        MMMMovieNight.socketNotificationReceived('MMM-Movie-Night-DATA', payload);
 
-        expect(MMMAQI.updateDom).toHaveBeenCalled();
+        expect(MMMMovieNight.updateDom).toHaveBeenCalled();
       });
     });
 
     describe('notification is not MMM-Movie-Night-DATA', () => {
       it('does not set data', () => {
-        MMMAQI.socketNotificationReceived('NOT-MMM-Movie-Night-DATA', payload);
+        MMMMovieNight.socketNotificationReceived('NOT-MMM-Movie-Night-DATA', payload);
 
-        expect(MMMAQI.data.aqi).toEqual(undefined);
+        expect(MMMMovieNight.data.aqi).toEqual(undefined);
       });
     });
   });
