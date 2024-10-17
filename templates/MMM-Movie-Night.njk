@@ -1,0 +1,7 @@
+{% if loading %}
+  <div class="dimmed light">{{ "LOADING" | translate | safe }}</div>
+{% else %}
+  <h1 class="small">
+    {{ theme }}
+  </h1>
+{% endif %}

@@ -11,6 +11,8 @@ export default [
       globals: {
         ...globals.jest,
         Log: 'readonly',
+        nunjucks: 'writable',
+        translate: 'writable',
       }
     },
     plugins: {
