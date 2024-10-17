@@ -6,7 +6,6 @@
  */
 
 // const Log = require('logger');
-const fetch = require('node-fetch');
 const NodeHelper = require('node_helper');
 
 module.exports = NodeHelper.create({
@@ -14,17 +13,19 @@ module.exports = NodeHelper.create({
     if (notification !== 'MMM-Movie-Night-FETCH') {
       return;
     }
+
+    return this.getData();
   },
 
-  async getData(token, city) {
+  async getData() {
     const response = await fetch(
-      `https://api.waqi.info/feed/${city}/?token=${token}`,
+      'https://movies.wowellworld.com/api/weeks?limit=1',
       this.requestInit(),
     );
 
-    const { aqi } = (await response.json()).data;
+    const weeks = await response.json();
 
-    this.sendSocketNotification('MMM-Movie-Night-DATA', { aqi });
+    this.sendSocketNotification('MMM-Movie-Night-DATA', weeks[0]);
   },
 
   requestInit() {
