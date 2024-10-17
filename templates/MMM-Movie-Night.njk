@@ -4,4 +4,11 @@
   <h1 class="small">
     {{ theme }}
   </h1>
+  <ul>
+    {% for movie in movies %}
+      <li>
+        {{ movie.title }} ({{ movie.year }})
+      </li>
+    {% endfor %}
+  </ul>
 {% endif %}

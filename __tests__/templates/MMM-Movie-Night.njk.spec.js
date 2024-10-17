@@ -17,6 +17,15 @@ describe('content loaded', () => {
 
     expect(template).toContain(week.theme);
   });
+
+  it('shows the theme', () => {
+    const template = nunjucks.render('MMM-Movie-Night.njk', payload);
+
+    payload.movies.forEach((movie) => {
+      expect(template).toContain(movie.title);
+      expect(template).toContain(movie.year.toString());
+    });
+  });
 });
 
 describe('loading', () => {
