@@ -1,0 +1,39 @@
+.mmm-movie-night > h1 {
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.mmm-movie-night > p {
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.mmm-movie-night-movies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.mmm-movie-night-movies:first-child {
+  margin-right: 10px;
+}
+
+.mmm-movie-night-movies:last-child {
+  margin-left: 10px;
+}
+
+.mmm-movie-night-movie-poster {
+  max-width: 200px;
+}
+
+.mmm-movie-night-movie {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  align-items: center;
+  padding: 10px;
+}

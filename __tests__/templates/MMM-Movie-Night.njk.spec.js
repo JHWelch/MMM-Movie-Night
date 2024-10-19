@@ -13,8 +13,6 @@ describe('content loaded', () => {
   it('shows the theme', () => {
     const template = nunjucks.render('MMM-Movie-Night.njk', payload);
 
-    console.log(payload);
-
     expect(template).toContain(week.theme);
   });
 
