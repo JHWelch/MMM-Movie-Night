@@ -1,5 +1,6 @@
 .mmm-movie-night {
   max-width: 33.33vw;
+
 }
 
 .mmm-movie-night > h1 {
@@ -18,8 +19,8 @@
 
 .mmm-movie-night-movies {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
+  flex-wrap: nowrap;
 }
 
 .mmm-movie-night-movies:first-child {
@@ -37,7 +38,12 @@
 .mmm-movie-night-movie {
   display: flex;
   flex-direction: column;
-  width: 200px;
   align-items: center;
   padding: 10px;
+  flex: 1 1 auto;
+}
+
+.mmm-movie-night-movie img {
+  max-width: 100%;
+  height: auto;
 }
