@@ -1,4 +1,4 @@
-# MMM-Movie-Nights
+# MMM-Movie-Night
 
 This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/).
 
@@ -8,7 +8,7 @@ It shows the movies for the upcoming movie night from [movies.wowellworld.com](h
 
 In MagicMirror/modules
 ```sh
-git clone https://github.com/JHWelch/MMM-Movie-Nights.git
+git clone https://github.com/JHWelch/MMM-Movie-Night.git
 ```
 
 No dependencies are required for usage. See below for development dependencies.
@@ -20,7 +20,7 @@ To use this module, add the following configuration block to the modules array i
 var config = {
     modules: [
         {
-            module: 'MMM-Movie-Nights',
+            module: 'MMM-Movie-Night',
             config: {
                 // See below for configurable options
                 // Can be empty
