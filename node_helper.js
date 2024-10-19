@@ -19,7 +19,7 @@ module.exports = NodeHelper.create({
 
   async getData() {
     const response = await fetch(
-      'https://movies.wowellworld.com/api/weeks?limit=1',
+      'https://movies.wowellworld.com/api/weeks?limit=1&posterWidth=w300',
       this.requestInit(),
     );
 

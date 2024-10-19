@@ -17,7 +17,7 @@ describe('node_helper', () => {
   describe('socketNotificationReceived', () => {
     describe('called with proper MMM-Movie-Night-FETCH', () => {
       beforeEach(() => {
-        fetchMock.mock('https://movies.wowellworld.com/api/weeks?limit=1', {
+        fetchMock.mock('https://movies.wowellworld.com/api/weeks?limit=1&posterWidth=w300', {
           status: 200,
           body: JSON.stringify([week]),
         });
@@ -31,7 +31,7 @@ describe('node_helper', () => {
         helper.socketNotificationReceived('MMM-Movie-Night-FETCH');
 
         expect(fetchMock.calls(true)[0][0])
-          .toBe('https://movies.wowellworld.com/api/weeks?limit=1');
+          .toBe('https://movies.wowellworld.com/api/weeks?limit=1&posterWidth=w300');
       });
 
       it('calls frontend with movie', async () => {
