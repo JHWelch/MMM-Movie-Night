@@ -16,7 +16,7 @@ Module.register('MMM-Movie-Night', {
 
   loading: true,
 
-  start() {
+  start () {
     Log.info(`Starting module: ${this.name}`);
     const self = this;
 
@@ -27,40 +27,40 @@ Module.register('MMM-Movie-Night', {
     }, this.config.updateInterval);
   },
 
-  getData() {
+  getData () {
     this.sendSocketNotification('MMM-Movie-Night-FETCH');
   },
 
-  getTemplate() {
+  getTemplate () {
     return 'templates/MMM-Movie-Night.njk';
   },
 
-  getTemplateData() {
+  getTemplateData () {
     return {
       ...this.data.week,
       loading: this.loading,
     };
   },
 
-  getScripts() {
+  getScripts () {
     return [];
   },
 
-  getStyles() {
+  getStyles () {
     return [
       'font-awesome.css',
       'MMM-Movie-Night.css',
     ];
   },
 
-  getTranslations() {
+  getTranslations () {
     return {
       en: 'translations/en.json',
       es: 'translations/es.json',
     };
   },
 
-  socketNotificationReceived(notification, payload) {
+  socketNotificationReceived (notification, payload) {
     if (notification !== 'MMM-Movie-Night-DATA') {
       return;
     }

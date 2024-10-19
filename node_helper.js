@@ -9,7 +9,7 @@
 const NodeHelper = require('node_helper');
 
 module.exports = NodeHelper.create({
-  socketNotificationReceived(notification, _payload) {
+  socketNotificationReceived (notification, _payload) {
     if (notification !== 'MMM-Movie-Night-FETCH') {
       return;
     }
@@ -17,7 +17,7 @@ module.exports = NodeHelper.create({
     return this.getData();
   },
 
-  async getData() {
+  async getData () {
     const response = await fetch(
       'https://movies.wowellworld.com/api/weeks?limit=1&posterWidth=w300',
       this.requestInit(),
@@ -28,7 +28,7 @@ module.exports = NodeHelper.create({
     this.sendSocketNotification('MMM-Movie-Night-DATA', { week: weeks[0] });
   },
 
-  requestInit() {
+  requestInit () {
     return {
       headers: { Accept: 'application/json' },
     };

@@ -16,7 +16,7 @@ module.exports = {
         theaterName: '',
         showingUrl: null,
         isFieldTrip: false,
-        displayLength: '1h 42m'
+        displayLength: '1h 42m',
       },
       {
         title: 'Neverending Story',
@@ -29,11 +29,11 @@ module.exports = {
         theaterName: '',
         showingUrl: null,
         isFieldTrip: false,
-        displayLength: '1h 42m'
-      }
+        displayLength: '1h 42m',
+      },
     ],
     slug: null,
     isSkipped: false,
-    styledTheme: []
-  }
+    styledTheme: [],
+  },
 };
