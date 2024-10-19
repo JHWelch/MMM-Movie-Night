@@ -24,7 +24,7 @@ describe('MMM-Movie-Night', () => {
 
   describe('defaults', () => {
     test('updateInterval', () => {
-      expect(MMMMovieNight.defaults.updateInterval).toBe(60000);
+      expect(MMMMovieNight.defaults.updateInterval).toBe(3600000);
     });
   });
 
