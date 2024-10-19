@@ -11,11 +11,7 @@ In MagicMirror/modules
 git clone https://github.com/JHWelch/MMM-Movie-Nights.git
 ```
 
-Install NPM dependencies
-```sh
-cd MMM-Movie-Nights
-npm install --production
-```
+No dependencies are required for usage. See below for development dependencies.
 
 ## Using the module
 
