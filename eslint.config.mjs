@@ -13,12 +13,14 @@ export default [
         Log: 'readonly',
         nunjucks: 'writable',
         translate: 'writable',
-      }
+      },
     },
     plugins: {
-      '@stylistic': stylisticJs
+      '@stylistic': stylisticJs,
     },
     rules: {
+      // Stylistic rules
+      '@stylistic/comma-dangle': ['error', 'always-multiline'],
       '@stylistic/indent': ['error', 2],
       '@stylistic/max-len': ['error', {
         ignoreStrings: true,
@@ -26,14 +28,23 @@ export default [
         ignoreUrls: true,
         tabWidth: 2,
       }],
+      '@stylistic/no-multi-spaces': 'error',
+      '@stylistic/no-multiple-empty-lines': ['error', { max: 1 }],
+      '@stylistic/quote-props': ['error', 'as-needed'],
       '@stylistic/quotes': ['error', 'single', {
         avoidEscape: true,
       }],
+      '@stylistic/semi': ['error', 'always'],
+      '@stylistic/space-before-function-paren': ['error', 'always'],
 
+      // ESLint rules
+      'no-console': ['error', {
+        allow: ['warn', 'error'],
+      }],
       'no-unused-vars': ['error', {
         argsIgnorePattern: '^_',
         caughtErrorsIgnorePattern: '^_',
       }],
-    }
+    },
   },
 ];
