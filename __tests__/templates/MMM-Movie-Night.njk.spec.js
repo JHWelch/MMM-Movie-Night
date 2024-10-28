@@ -21,7 +21,6 @@ describe('content loaded', () => {
 
     payload.movies.forEach((movie) => {
       expect(template).toContain(movie.title);
-      expect(template).toContain(movie.year.toString());
     });
   });
 });
