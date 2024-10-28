@@ -12,13 +12,13 @@
       {% for movie in movies %}
         <div class="mmm-movie-night-movie">
           <img
-          src="{{ movie.posterUrl }}"
-          class="mmm-movie-night-movie-poster"
-          alt=""
-        ></img>
+            src="{{ movie.posterUrl }}"
+            class="mmm-movie-night-movie-poster"
+            alt=""
+          ></img>
 
-          {{ movie.title }} ({{ movie.year }})
-      </div>
+          {{ movie.title }}
+        </div>
       {% endfor %}
     </div>
   {% endif %}
