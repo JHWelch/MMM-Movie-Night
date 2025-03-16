@@ -37,7 +37,7 @@ Module.register('MMM-Movie-Night', {
 
   getTemplateData () {
     return {
-      ...this.data.week,
+      ...this.data.event,
       loading: this.loading,
     };
   },
@@ -65,7 +65,7 @@ Module.register('MMM-Movie-Night', {
       return;
     }
 
-    this.data.week = payload.week;
+    this.data.event = payload.event;
     this.loading = false;
     this.updateDom(300);
   },

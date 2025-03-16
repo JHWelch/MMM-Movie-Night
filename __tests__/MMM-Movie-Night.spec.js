@@ -1,4 +1,4 @@
-const week = require('./fixtures/week');
+const event = require('./fixtures/event');
 
 describe('MMM-Movie-Night', () => {
   beforeAll(() => {
@@ -92,11 +92,11 @@ describe('MMM-Movie-Night', () => {
     });
 
     it('returns information needed by template', () => {
-      MMMMovieNight.data.week = week;
+      MMMMovieNight.data.event = event;
       MMMMovieNight.loading = false;
 
       expect(MMMMovieNight.getTemplateData()).toEqual({
-        ...week,
+        ...event,
         loading: false,
       });
     });
@@ -116,29 +116,29 @@ describe('MMM-Movie-Night', () => {
   describe('socketNotificationReceived', () => {
     describe('notification is MMM-Movie-Night-DATA', () => {
       it('sets loading to false', () => {
-        MMMMovieNight.socketNotificationReceived('MMM-Movie-Night-DATA', {week});
+        MMMMovieNight.socketNotificationReceived('MMM-Movie-Night-DATA', {event});
 
         expect(MMMMovieNight.loading).toBe(false);
       });
 
       it('updates dom', () => {
-        MMMMovieNight.socketNotificationReceived('MMM-Movie-Night-DATA', {week});
+        MMMMovieNight.socketNotificationReceived('MMM-Movie-Night-DATA', {event});
 
         expect(MMMMovieNight.updateDom).toHaveBeenCalled();
       });
 
       it('sets data', () => {
-        MMMMovieNight.socketNotificationReceived('MMM-Movie-Night-DATA', {week});
+        MMMMovieNight.socketNotificationReceived('MMM-Movie-Night-DATA', {event});
 
-        expect(MMMMovieNight.data.week).toEqual(week);
+        expect(MMMMovieNight.data.event).toEqual(event);
       });
     });
 
     describe('notification is not MMM-Movie-Night-DATA', () => {
       it('does not set data', () => {
-        MMMMovieNight.socketNotificationReceived('NOT-MMM-Movie-Night-DATA', {week});
+        MMMMovieNight.socketNotificationReceived('NOT-MMM-Movie-Night-DATA', {event});
 
-        expect(MMMMovieNight.data.week).toEqual(undefined);
+        expect(MMMMovieNight.data.event).toEqual(undefined);
       });
     });
   });

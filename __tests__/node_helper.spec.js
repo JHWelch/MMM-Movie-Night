@@ -1,5 +1,5 @@
 const { default: fetchMock } = require('fetch-mock');
-const week = require('./fixtures/week');
+const event = require('./fixtures/event');
 
 beforeAll(() => {
   require('../__mocks__/logger');
@@ -17,9 +17,9 @@ describe('node_helper', () => {
   describe('socketNotificationReceived', () => {
     describe('called with proper MMM-Movie-Night-FETCH', () => {
       beforeEach(() => {
-        fetchMock.mock('https://movies.wowellworld.com/api/weeks?limit=1&posterWidth=w185', {
+        fetchMock.mock('https://movies.wowellworld.com/api/events?limit=1&posterWidth=w185', {
           status: 200,
-          body: JSON.stringify([week]),
+          body: JSON.stringify([event]),
         });
       });
 
@@ -31,14 +31,14 @@ describe('node_helper', () => {
         helper.socketNotificationReceived('MMM-Movie-Night-FETCH');
 
         expect(fetchMock.calls(true)[0][0])
-          .toBe('https://movies.wowellworld.com/api/weeks?limit=1&posterWidth=w185');
+          .toBe('https://movies.wowellworld.com/api/events?limit=1&posterWidth=w185');
       });
 
       it('calls frontend with movie', async () => {
         await helper.socketNotificationReceived('MMM-Movie-Night-FETCH');
 
         expect(helper.sendSocketNotification)
-          .toHaveBeenCalledWith('MMM-Movie-Night-DATA', {week});
+          .toHaveBeenCalledWith('MMM-Movie-Night-DATA', {event});
       });
     });
   });

@@ -19,13 +19,13 @@ module.exports = NodeHelper.create({
 
   async getData () {
     const response = await fetch(
-      'https://movies.wowellworld.com/api/weeks?limit=1&posterWidth=w185',
+      'https://movies.wowellworld.com/api/events?limit=1&posterWidth=w185',
       this.requestInit(),
     );
 
-    const weeks = await response.json();
+    const events = await response.json();
 
-    this.sendSocketNotification('MMM-Movie-Night-DATA', { week: weeks[0] });
+    this.sendSocketNotification('MMM-Movie-Night-DATA', { event: events[0] });
   },
 
   requestInit () {
