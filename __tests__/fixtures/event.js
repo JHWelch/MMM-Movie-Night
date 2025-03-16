@@ -1,7 +1,7 @@
 module.exports = {
-  week: {
+  event: {
     id: '10806885-b1b9-80bc-86a1-e97ba3f6ee79',
-    weekId: '2024-10-17',
+    eventId: '2024-10-17',
     theme: 'My First Horror Movie',
     date: 'Thursday, October 17',
     movies: [
